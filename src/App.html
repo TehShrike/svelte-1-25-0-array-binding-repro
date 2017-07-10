@@ -1,0 +1,34 @@
+<input type="number" bind:value="count">
+
+<ol>
+	{{#each arrayToDisplay as id}}
+		<Top bind:top="idToTop[id]">
+			<li>{{id}}: top is {{idToTop[id]}}</li>
+		</Top>
+	{{/each}}
+</ol>
+
+<script>
+	import Top from './Top.html'
+	
+	export default {
+		data() {
+			return {
+				count: 3,
+				idToTop: Object.create(null)
+			}
+		},
+		computed: {
+			arrayToDisplay: count => new Array(count)
+				.fill(null)
+				.map((_, i) => 'id-' + i)
+				.reverse()
+		},
+		components: {
+			Top
+		},
+		oncreate() {
+			this.observe('idToTop', map => console.log(map))
+		}
+	}
+</script>

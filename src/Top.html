@@ -1,0 +1,28 @@
+<div ref:element>
+	{{yield}}
+</div>
+
+<script>
+	export default {
+		oncreate() {
+			const listener = () => this.updateTop()
+			window.addEventListener('scroll', listener)
+			this.set({ listener })
+			this.updateTop()
+		},
+		ondestroy() {
+			const listener = this.get('listener')
+			window.removeEventListener('scroll', listener)
+//			this.set({ top: null })
+		},
+		methods: {
+			updateTop() {
+				const relativeToViewport = this.refs.element.firstElementChild.getBoundingClientRect()
+				console.log('Updating Top component to value', relativeToViewport.top)
+				this.set({
+					top: relativeToViewport.top
+				})
+			}
+		}
+	}
+</script>
