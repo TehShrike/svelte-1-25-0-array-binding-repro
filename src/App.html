@@ -1,9 +1,9 @@
 <input type="number" bind:value="count">
 
 <ol>
-	{{#each arrayToDisplay as id}}
-		<Top bind:top="idToTop[id]" key="{{id}}">
-			<li>{{id}}: top is {{idToTop[id]}}</li>
+	{{#each arrayToDisplay as object @id}}
+		<Top bind:top="idToTop[object.id]">
+			<li>{{object.id}}: top is {{idToTop[object.id]}}</li>
 		</Top>
 	{{/each}}
 </ol>
@@ -21,7 +21,7 @@
 		computed: {
 			arrayToDisplay: count => new Array(count)
 				.fill(null)
-				.map((_, i) => 'id-' + i)
+				.map((_, i) => ({ id: 'id-' + i}))
 				.reverse()
 		},
 		components: {

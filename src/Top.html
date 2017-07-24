@@ -9,11 +9,6 @@
 			window.addEventListener('scroll', listener)
 			this.set({ listener })
 			this.updateTop()
-
-			this.observe('key', id => {
-				console.log('detected id change to', id)
-				this.updateTop()
-			})
 		},
 		ondestroy() {
 			const listener = this.get('listener')
