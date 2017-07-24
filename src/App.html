@@ -2,7 +2,7 @@
 
 <ol>
 	{{#each arrayToDisplay as object @id}}
-		<Top bind:top="idToTop[object.id]">
+		<Top bind:top="idToTop[object.id]" position="{{object.id}}">
 			<li>{{object.id}}: top is {{idToTop[object.id]}}</li>
 		</Top>
 	{{/each}}
