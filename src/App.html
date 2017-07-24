@@ -2,7 +2,7 @@
 
 <ol>
 	{{#each arrayToDisplay as id}}
-		<Top bind:top="idToTop[id]">
+		<Top bind:top="idToTop[id]" key="{{id}}">
 			<li>{{id}}: top is {{idToTop[id]}}</li>
 		</Top>
 	{{/each}}
@@ -10,7 +10,7 @@
 
 <script>
 	import Top from './Top.html'
-	
+
 	export default {
 		data() {
 			return {
